@@ -1,10 +1,65 @@
 import React from 'react';
 import {  useNavigate } from 'react-router-dom';
 import '../App.css';
+import styled from 'styled-components';
+import image1 from '../images/2nd screen.png';
+import image2 from '../images/view-img.png'
 
-import image1 from './2nd screen.png';
-import image2 from './view-img.png'
+const Container=styled.div`
+    align-items: center;
+    text-align: left;
+    margin: 50px 100px;
+`;
+const PdfImage=styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+const Para=styled.p`
+    display: flex;
+    justify-content: center;
+    font-weight:600;
+    font-size: xx-large;
+    color: rgb(55,103,134);
+    font-family: "Roboto";
+`;
+const ViewImg1=styled.img`
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border: solid 0.5px;
+    margin-right: 100px;
+    height:500px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+      }
+`;
+const ViewImg2=styled.img`
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border: solid 0.5px;
+    height:500px;
+`;
+
+const Button=styled.button`
+    margin: auto;
+    display: block;
+    font-size: medium;
+    margin-top: 50px;
+    background-color: rgb(55,103,134);
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    &:hover {
+        background-color: white;
+        color: rgb(55,103,134);
+    }
+`;
 export default function View() {
     const navigator = useNavigate();
     function handleClick() {
@@ -13,21 +68,14 @@ export default function View() {
     };
     return (
         
-        <div className='container'>
-        <p style={{display:"flex", justifyContent:"center"}}>Process Document</p>
-            <div className='pdf-image'
-            style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        
-      }}
-      >
-               <img src={image1} className="view-img" alt='pdf' style={{ marginRight: '100px', height:'450px' }}></img><br></br>
-               <img src={image2} className="view-img" alt='pdf' style={{height:'450px'}}></img>
-
-            </div>
-            <button className='btn' onClick={handleClick}>Extract Data</button>
-        </div>
+        <Container>
+        <Para>Process Document</Para>
+            <PdfImage>
+               <ViewImg1 src={image1} alt='pdf'></ViewImg1>
+               <ViewImg2 src={image2} alt='pdf'></ViewImg2>
+               
+            </PdfImage>
+            <Button  onClick={handleClick}>Extract Data</Button>
+        </Container>
     );
 }
